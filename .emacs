@@ -6,14 +6,13 @@
 
 (setq standard-indent 3)              ; Set indent to 3 spaces
 (setq scroll-step 1)                  ; Scroll line by line
-(mouse-wheel-mode t)                  ; Enable mouse wheel scrolling
 (setq make-backup-files nil)          ; disable backup creation
 (setq auto-save-default nil)          ; disable auto-save
 (setq inhibit-startup-message t)      ; No Startup Message
 (setq ring-bell-function 'ignore)     ; sounds off
 (global-font-lock-mode t)             ; turn on font-lock mode
 (setq next-line-add-newlines nil)     ; stop at the end of the file, not just add lines
-
+;(mouse-wheel-mode t)                  ; Enable mouse wheel scrolling
 
 ;;;*** Display Settings ***;;;
 
@@ -35,8 +34,8 @@
 ;set default to lines not wrapping
 (set-default 'truncate-lines t)
 
-(tool-bar-mode -1)                   ; turn off icon bar
-(set-scroll-bar-mode 'right)         ; scroll bar on the right
+;(tool-bar-mode -1)                   ; turn off icon bar
+;(set-scroll-bar-mode 'right)         ; scroll bar on the right
 
 ;;;***********************;;;
 
@@ -68,8 +67,8 @@
 (global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
 
 ;use M-up/down to view previous/next commands in emacs shell
-(define-key comint-mode-map [M-up]   'comint-previous-input)
-(define-key comint-mode-map [M-down] 'comint-next-input)
+;(define-key comint-mode-map [M-up]   'comint-previous-input)
+;(define-key comint-mode-map [M-down] 'comint-next-input)
 
 (global-set-key "\M-\C-p"  'my-scroll-up)    ; scroll w/ point
 (global-set-key "\M-\C-n"  'my-scroll-down)
@@ -128,6 +127,6 @@
 (setq verilog-linter "cn_lint")
 
 ; passwords not shown
-(setq comint-password-prompt-regexp
-      (concat comint-password-prompt-regexp
-              "\\|^Password for .*:\\s *\\'"))
+;(setq comint-password-prompt-regexp
+;      (concat comint-password-prompt-regexp
+;              "\\|^Password for .*:\\s *\\'"))
