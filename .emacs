@@ -132,8 +132,6 @@
 ;(setq comint-password-prompt-regexp
 ;      (concat comint-password-prompt-regexp
 ;              "\\|^Password for .*:\\s *\\'"))
-
-
 ; emacs package manager
 (require 'package)
 (add-to-list 'package-archives
