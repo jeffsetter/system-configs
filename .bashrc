@@ -118,3 +118,35 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+
+# change bash prompt to show current directory
+PS1='\w\$ '
+
+## maybe you're interested in these?
+#HOST='\[\033[02;36m\]\h'; HOST=' '$HOST
+#TIME='\[\033[01;31m\]\t \[\033[01;32m\]'
+## this shows the first four and last two folders
+#LOCATION='`pwd | sed "s#\(/[^/]\{1,\}/[^/]\{1,\}/[^/]\{1,\}/[^/]\{1,\}/\).*\(/[^/]\{1,\}/[^/]\{1,\}\)/\{0,1\}#\1...\2#g"`$ '
+#BRANCH=' \[\033[00;33m\]$(git_branch)\[\033[00m\]\n\$ '
+#PS1='\[\033[01;36m\]'$LOCATION'\[\033[00m\]'
+
+alias dirs='dirs -v' # use this with pushd && popd -N
+
+# add some helper functions to git
+git() {
+    if [[ $1 == "xpull" ]]; then
+        shift
+        command git pull --rebase $@
+    elif [[ $1 == "xlog" ]]; then
+        shift
+        command git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit $@
+    elif [[ $1 == "xlogs" ]]; then
+        shift
+        command git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit $@ | head -n30
+    elif [[ $1 == "xlogl" ]]; then
+        shift
+        command git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit $@ | head -n60
+    else
+        command git "$@"
+    fi
+}
